@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <script src="application.js"></script>
+    <script src="controller.js"></script>
+    <script src="model.js"></script>
+    <script src="services.js"></script>
+    <script src="note.js"></script>
+    <script src="viewer.js"></script>
+    <script src="main.js"></script>
+
+
     <title>notePro</title>
 </head>
-<body>
+<body onload="app.ctrl.applyTemplate()">
+<header class="header" role="banner">notePro</header>
 
+<div class="menu">
+    <nav class="navL" id=navLeft role="navigation left">Nav Left</nav>
+    <nav class="navR" id=navRight role="navigation right">Nav Right</nav>
+</div>
+
+<div class="content">
+    <nav class="nav" id="due" role="navigation">Nav</nav>
+
+    <main class="main" id="noteContent" role="main">Content<br>Bla</main>
+
+    <aside class="sidebar" id="edit" role="edit">Sidebar</aside>
+</div>
+
+<footer class="footer" id="footer" role="contentinfo"></footer>
 </body>
 </html>
