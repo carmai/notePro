@@ -32,6 +32,11 @@ class Controller {
         app.view.editTemplate(i)
     }
 
+    applyActiveOnlyTemplate(){
+        app.view.activeOnlyTemplate();
+    }
+
+
     formValidate(){
         // Validation of data for new notes
         console.log("I am validating");
@@ -141,6 +146,18 @@ class Controller {
         app.model.deleteNote(i);
         app.ctrl.applyTemplate();
 
+    }
+
+    executesortByImportance(){
+        app.model.sortByImportance();
+    }
+
+    executeSortByFinishDate(){
+        app.model.sortByFinishDate();
+    }
+
+    executeSortByCreatedDate(){
+        app.model.sortByCreatedDate();
     }
 
 

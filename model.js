@@ -49,6 +49,22 @@ class Model {
 
     }
 
+    sortByImportance() {
+    this.notes.sort(function(a, b){return b.importance - a.importance});
+    app.ctrl.applyTemplate();
+}
+
+    sortByFinishDate() {
+        this.notes.sort(function(a, b){return a.dueDate - b.dueDate});
+        app.ctrl.applyTemplate();
+    }
+
+    sortByCreatedDate(){
+        this.notes.sort(function(a, b){return a.created - b.created});
+        app.ctrl.applyTemplate();
+    }
+
+
     modifyFinishState(noteNumber, finishedCheck){
         if (finishedCheck == true){
             console.log("set finished code 1");
