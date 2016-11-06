@@ -13,7 +13,7 @@ class Viewer {
 
     templateZero(){
         this.insertMenu();
-        document.getElementById("noteContent").innerHTML = "No notes";
+        document.getElementById("noteContent").innerHTML = "<h3>There are no notes => Use the menu to create a new one</h3>";
     }
 
     templateDefault(){
@@ -124,12 +124,17 @@ class Viewer {
             "<button class='button' id='createNote' onclick='app.ctrl.applyEditNoteTemplate()'>Create new note</button>" +
             "<button class='button' id='sortFinishDate' onclick='myFunction()'>Sort by finish date</button>" +
             "<button class='button' id='sortCreatedDate' onclick='myFunction()'>Sort by created date</button>" +
-            "<button class='button' id='sortImportance' onclick='myFunction()'>Sort by Importance</button>" +
-            "<button class='button' id='showHideFinished' onclick='myFunction()'>Hide finished</button>";
-        document.getElementById("navRight").innerHTML =
+            "<button class='button' id='sortImportance' onclick='myFunction()'>Sort by importance</button>";
+       /* document.getElementById("navRight").innerHTML =
             "<select class='selectStyle' id='styleSwitcher' onchange='myFunction()'>" +
             "<option class='selectStyle' value='default'>Default Style</option>" +
-            "<option class='selectStyle' value='fancy'>Fancy Style</option></select>" ;
+            "<option class='selectStyle' value='fancy'>Fancy Style</option></select>" ; */
+        document.getElementById("leftMenu").innerHTML =
+            "<select class='selectStyle' id='styleSwitcher' onchange='myFunction()'>" +
+            "<option class='selectStyle' value='default'>Style 1</option>" +
+            "<option class='selectStyle' value='fancy'>Style 2</option></select></br></br>" +
+            "<button class='buttonl' id='showAll' onclick='myFunction()'><b>*Show all items<b/></button></br>" +
+            "<button class='buttonl' id='hideFinished' onclick='myFunction()'><b>*Hide finished</b></button>";
     }
 
     formString(){
