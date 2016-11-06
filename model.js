@@ -16,10 +16,36 @@ class Model {
     makeNote(title, content, importance, dueDate){
 
         this.notes.push(new Note(title, content, importance, dueDate));
-        this.saveData();
+        this.saveData(); // TODO edit function saveData()
     }
 
-    removeNote(){
+    editNote(i, title, content, importance, dueDate){
+        console.log("I model have received the message to edit a note with the id: " + i);
+        this.notes[i].title = title;
+        this.notes[i].content = content;
+        this.notes[i].importance = importance;
+        this.notes[i].dueDate = dueDate;
+        // updating affected variables
+        this.notes[i].created = new Date();
+        console.log("diese note heisst: " + this.notes[i].name);
+        // TODO save data to server
+
+
+    }
+
+    deleteNote(i){
+        console.log("I model am deleting the note. The actual array is" + this.notes);
+        var notes1 = [];
+        var k;
+        for (k = 0; k < app.model.notes.length; k++){
+            if (k != i) {
+                notes1.push(this.notes[k]);
+
+            }
+        }
+        this.notes = notes1;
+        console.log("I have deleting the note. The actual array is" + this.notes);
+        // TODO savedata to server
 
     }
 

@@ -10,7 +10,7 @@ class Note {
 
         this.name = "note";
         this.created = new Date();
-        this.hoursLeft = Math.abs(this.dueDate - this.created) / 3600000;
+        //this.hoursLeft = Math.abs(this.dueDate - this.created) / 3600000;
         this.done = 0; // 0 = not finished
 
     }
@@ -20,7 +20,6 @@ class Note {
         console.log("I'm " + this.name + " with title: " + this.title +
             " content is: " + this.content + " and importance is: " + this.importance +
             ". My due date is: " + this.dueDate + " I was created: "
-            + this.created + " you have almost " + Math.round(this.hoursLeft) +
-            " hours time to complete the task ");
+            + this.created );
     }
 }

@@ -22,6 +22,7 @@ class Viewer {
         this.insertMenu();
 
         /* core */
+        var now = new Date();
         var notesList = "";
         var i;
 
@@ -32,7 +33,11 @@ class Viewer {
                 "<small>Created: " + app.model.notes[i].created + "</small><br><br>" +
                 "Finished: <input onchange='app.ctrl.finishState(this.value)' type='checkbox'" +
                 "value = '" + i + "' id='noteNumber" + i + "'>" +
-                " Time left: " + Math.round(app.model.notes[i].hoursLeft) + " hours<br><br><br><br></fieldset>";
+                " Time left: " + Math.round(Math.abs(app.model.notes[i].dueDate - now) / 3600000) +
+                " hours<br><br><button class='formButton' id='editNote' " + i +
+                " onclick='app.ctrl.applyEditTemplate(" + i + ")'>Edit</button>" +
+                " <button class='formButton' id='deleteNote' " + i + " onclick='app.ctrl.executeDeleteNote(" + i + ")'>Delete</button>" +
+                "<br><br></fieldset>";
 
         }
         document.getElementById("noteContent").innerHTML = notesList;
@@ -42,7 +47,7 @@ class Viewer {
     }
 
     editNoteTemplate(){
-        //TODO notes edit template
+        //TODO this template is for editing a new note
         console.log("create note template has been activated");
         var createNoteFormString = "<div class='createNote' id='createNote'><form id = 'editNoteForm' > <fieldset> <legend>Title</legend> <p>" +
             "<label for='title'>Title: </label> <input type='text' name='title' placeholder='title' id='title' ></p></fieldset><fieldset>" +
@@ -53,8 +58,9 @@ class Viewer {
             "<option value='4'>Level 4: high</option><option value='5'>Level 5: very high</option></select></p></fieldset><fieldset><legend>Due Date" +
             "</legend><p><label for='dueDate'>Due date: </label><input type='date' name='dueDate' id='dueDate'></p></fieldset></form>" +
             "<p><button class='formButton' id='sendData' onclick='app.ctrl.formValidate()'>Save</button>" +
-            "<button class='formButton' id='cancel' onclick='app.ctrl.applyTemplate()'>Cancel</button></p></div>" ;
+            " <button class='formButton' id='cancel' onclick='app.ctrl.applyTemplate()'>Cancel</button></p></div>" ;
         document.getElementById("edit").innerHTML = createNoteFormString;
+
 
         /*
          document.write(createNoteFormString);
@@ -83,8 +89,34 @@ class Viewer {
 
     }
 
-    editTemplate(){
-        //TODO notes edit template
+    editTemplate(i){
+        var editNoteFormString = "<div class='createNote' id='createNote'><form id = 'editNoteForm' > <fieldset> <legend>Title</legend> <p>" +
+            "<label for='title'>Title: </label> <input type='text' name='title' placeholder='title' id='title' ></p></fieldset><fieldset>" +
+            "<legend>Content</legend><p><label for='inhalt'>Content: </label><textarea name='inhalt' placeholder='content' id='inhalt' >" +
+            "</textarea></p></fieldset><fieldset><legend>Importance</legend><p><label for='importance'>Importance: </label><select name='importance'" +
+            " id='importance' class='formSelect'><option value='1'>Level 1: very low</option><option value='2'>Level 2: low</option>" +
+            "<option value='3'>Level 3: medium</option>" +
+            "<option value='4'>Level 4: high</option><option value='5'>Level 5: very high</option></select></p></fieldset><fieldset><legend>Due Date" +
+            "</legend><p><label for='dueDate'>Due date: </label><input type='date' name='dueDate' id='dueDate'></p></fieldset></form>" +
+            "<p><button class='formButton' id='sendData' onclick='app.ctrl.editFormValidate(" + i + ")'>Save</button>" +
+            " <button class='formButton' id='cancel' onclick='app.ctrl.applyTemplate()'>Cancel</button></p></div>" ;
+        document.getElementById("edit").innerHTML = editNoteFormString;
+
+        document.getElementById("title").value = app.model.notes[i].title;
+        document.getElementById("inhalt").value = app.model.notes[i].content;
+        document.getElementById("importance").value = app.model.notes[i].importance;
+
+        var year = app.model.notes[i].dueDate.getFullYear();
+        var month = app.model.notes[i].dueDate.getMonth()+1;
+        var dayInteger = app.model.notes[i].dueDate.getDate();
+        if (dayInteger < 10){
+            dayInteger = "0" + dayInteger;
+        }
+        var dateString = year + "-" + month + "-" + dayInteger;
+        document.getElementById("dueDate").value = dateString;
+
+
+
     }
 
     insertMenu(){
@@ -98,6 +130,10 @@ class Viewer {
             "<select class='selectStyle' id='styleSwitcher' onchange='myFunction()'>" +
             "<option class='selectStyle' value='default'>Default Style</option>" +
             "<option class='selectStyle' value='fancy'>Fancy Style</option></select>" ;
+    }
+
+    formString(){
+
     }
 
 }
