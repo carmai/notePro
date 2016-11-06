@@ -4,18 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" type="text/css">
 
-    <script src="application.js"></script>
-    <script src="controller.js"></script>
-    <script src="model.js"></script>
-    <script src="services.js"></script>
-    <script src="note.js"></script>
-    <script src="viewer.js"></script>
-    <script src="main.js"></script>
-
-
     <title>notePro</title>
 </head>
-<body onload="app.ctrl.applyTemplate()">
+
+<!-- <body id="appContainer" onload="app.ctrl.applyTemplate()"> -->
+
+<body id="appContainer" >
 <header class="header" role="banner">notePro</header>
 
 <div class="menu">
@@ -23,14 +17,23 @@
     <nav class="navR" id=navRight role="navigation right">Nav Right</nav>
 </div>
 
-<div class="content">
-    <nav class="nav" id="due" role="navigation">Nav</nav>
+<div class="content" id="content">
+    <nav class="nav" id="due" role="navigation"></nav>
 
-    <main class="main" id="noteContent" role="main">Content<br>Bla</main>
+    <main class="main" id="noteContent" role="main">content<br>Bla</main>
 
-    <aside class="sidebar" id="edit" role="edit">Sidebar</aside>
+    <aside class="sidebar" id="edit" role="edit"></aside>
 </div>
 
 <footer class="footer" id="footer" role="contentinfo"></footer>
+
+<script src="application.js"></script>
+<script src="model.js"></script>
+<script src="services.js"></script>
+<script src="note.js"></script>
+<script src="viewer.js"></script>
+<script src="controller.js"></script>
+<script src="main.js"></script>
+
 </body>
 </html>

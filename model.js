@@ -33,9 +33,26 @@ class Model {
             this.notes[noteNumber].done = 0;
             console.log("Note number: " + noteNumber + " Code has been set to " + this.notes[noteNumber].done);
         }
+        // TODO start saveData()
     }
 
     saveData(){
         // TODO call services to save data
     }
+
+    // test
+    makeJson(){
+        /* works
+        var jsonNotes = JSON.stringify(this.notes);
+        console.log(jsonNotes);
+
+        var arrayNotes = JSON.parse(jsonNotes);
+        console.log(arrayNotes);
+        console.log(this.notes);
+        this.notes = arrayNotes;
+        app.model.makeNote("note 3", "testen", 5, "2016-11-06");
+        app.ctrl.applyTemplate();
+*/
+    }
+
 }
