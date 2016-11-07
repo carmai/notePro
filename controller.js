@@ -141,7 +141,6 @@ class Controller {
     }
 
     executeDeleteNote(i){
-        // TODO call removeNote() in model
         console.log("I am going to call model to delete note " + i);
         app.model.deleteNote(i);
         app.ctrl.applyTemplate();
@@ -171,4 +170,20 @@ class Controller {
         app.model.modifyFinishState(noteNumber, finishedCheck);
 
     }
+
+    applyChangeCSS(){
+
+        var styleValue = document.getElementById("styleSwitcher").value;
+        console.log(styleValue);
+
+        if (styleValue == 0){
+            app.view.changeCSS("style.css", 0);
+        } else {
+            app.view.changeCSS("style1.css", 0);
+        }
+
+
+    }
+
+
 }

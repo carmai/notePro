@@ -161,11 +161,24 @@ class Viewer {
             "<option class='selectStyle' value='default'>Default Style</option>" +
             "<option class='selectStyle' value='fancy'>Fancy Style</option></select>" ; */
         document.getElementById("leftMenu").innerHTML =
-            "<select class='selectStyle' id='styleSwitcher' onchange='myFunction()'>" +
-            "<option class='selectStyle' value='default'>Style 1</option>" +
-            "<option class='selectStyle' value='fancy'>Style 2</option></select></br></br>" +
+            "<select class='selectStyle' id='styleSwitcher' onchange='app.ctrl.applyChangeCSS()'>" +
+            "<option class='selectStyle' value='0'>CSS 1</option>" +
+            "<option class='selectStyle' value='1'>CSS 2</option></select></br></br>" +
             "<button class='buttonl' id='showAll' onclick='app.ctrl.applyTemplate()'><b>*Show all items<b/></button></br>" +
             "<button class='buttonl' id='hideFinished' onclick='app.ctrl.applyActiveOnlyTemplate()'><b>*Hide finished</b></button>";
+    }
+
+    changeCSS(cssFile, cssLinkIndex){
+
+        var link0 = document.getElementsByTagName("link").item(cssLinkIndex);
+
+        var link1 = document.createElement("link");
+        link1.setAttribute("rel", "stylesheet");
+        link1.setAttribute("type", "text/css");
+        link1.setAttribute("href", cssFile);
+
+        document.getElementsByTagName("head").item(0).replaceChild(link1, link0);
+
     }
 
     formString(){
